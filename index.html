@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FikXzMods - Kebutuhan Hosting Profesional</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-light: #6366f1;
+            --primary-dark: #818cf8;
+            --bg-light: #f4f4f5;
+            --bg-dark: #09090b;
+            --card-light: #ffffff;
+            --card-dark: #18181b;
+            --text-light: #18181b;
+            --text-dark: #e4e4e7;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            opacity: 0;
+            background-image: radial-gradient(var(--primary-dark) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: -19px -19px;
+            background-attachment: fixed;
+        }
+        body.loaded {
+            opacity: 1;
+            transition: opacity 0.8s ease-in;
+        }
+
+        .light body { background-color: var(--bg-light); background-image: radial-gradient(var(--primary-light) 1px, transparent 1px); }
+        .dark body { background-color: var(--bg-dark); background-image: radial-gradient(rgba(129, 140, 248, 0.2) 1px, transparent 1px); }
+        .light .themed-bg { background-color: var(--card-light); }
+        .dark .themed-bg { background-color: var(--card-dark); }
+        .light .themed-text { color: var(--primary-light); }
+        .dark .themed-text { color: var(--primary-dark); }
+        .light .themed-border { border-color: #e4e4e7; }
+        .dark .themed-border { border-color: #27272a; }
+
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-dark); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        #preloader.loaded { opacity: 0; visibility: hidden; }
+        .loader-logo { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 900; color: var(--primary-dark); animation: pulse 1.8s infinite ease-in-out; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .card-interaction { transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .card-interaction:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+
+        .gradient-btn {
+            background-image: linear-gradient(to right, #4338ca 0%, #6d28d9 51%, #4338ca 100%);
+            background-size: 200% auto;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .gradient-btn:hover { background-position: right center; transform: scale(1.05); box-shadow: 0 0 25px rgba(124, 58, 237, 0.6); }
+        
+        .header-glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            transition: all 0.3s ease;
+        }
+        .light .header-glass { background-color: rgba(255, 255, 255, 0.7); }
+        .dark .header-glass { background-color: rgba(9, 9, 11, 0.7); }
+
+        .animated-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .animated-element.in-view { opacity: 1; transform: translateY(0); }
+        .bonus-item { transition: background-color 0.3s ease, transform 0.3s ease; }
+        .bonus-item:hover { transform: translateX(5px); background-color: rgba(129, 140, 248, 0.1); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="preloader"><div class="loader-logo">FikXzMods</div></div>
+
+    <header id="header" class="header-glass fixed top-0 left-0 w-full z-50 themed-border border-b">
+        <nav class="container mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
+            <a href="#" class="flex items-center space-x-2">
+                <svg class="h-8 w-8 themed-text" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0ZM50 88C29.0122 88 12 70.9878 12 50C12 29.0122 29.0122 12 50 12C70.9878 12 88 29.0122 88 50C88 70.9878 70.9878 88 50 88Z"/>
+                    <path d="M42.5 30H57.5L47.5 70H32.5L42.5 30Z"/>
+                </svg>
+                <span class="text-xl font-black themed-text hidden sm:inline">FikXzMods</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <a href="#contact" class="gradient-btn hidden sm:inline-block px-5 py-2.5 rounded-full font-semibold text-sm text-white">Hubungi Kami</a>
+                <button id="theme-toggle-btn" class="themed-bg themed-border border p-2 rounded-full focus:outline-none">
+                    <i id="theme-icon" class="fa-solid fa-moon text-lg w-5 h-5 themed-text"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <section id="hero-section" class="min-h-[90vh] flex items-center justify-center text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-hero-pattern" data-parallax></div>
+            <div class="container mx-auto px-6 lg:px-8 animated-element">
+                <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6">
+                    <span class="block">Layanan Hosting</span>
+                    <span class="themed-text block">Generasi Berikutnya.</span>
+                </h1>
+                <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-600 dark:text-gray-400">
+                    Solusi server dan hosting profesional untuk semua kebutuhan Anda. Cepat, Andal, dan Terjangkau.
+                </p>
+            </div>
+        </section>
+
+        <section id="vps" class="py-20">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="animated-element text-3xl font-bold text-center mb-12">VPS Digital Ocean</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-6"><span class="themed-text font-bold text-lg">RAM 32 C8</span><p class="text-3xl font-bold mt-2 mb-4">Rp 60.000</p></div>
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-6"><span class="themed-text font-bold text-lg">RAM 16 C8</span><p class="text-3xl font-bold mt-2 mb-4">Rp 55.000</p></div>
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-6"><span class="themed-text font-bold text-lg">RAM 16 C4</span><p class="text-3xl font-bold mt-2 mb-4">Rp 50.000</p></div>
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-6"><span class="themed-text font-bold text-lg">RAM 8 C4</span><p class="text-3xl font-bold mt-2 mb-4">Rp 45.000</p></div>
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-6"><span class="themed-text font-bold text-lg">RAM 4 C2</span><p class="text-3xl font-bold mt-2 mb-4">Rp 30.000</p></div>
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-6"><span class="themed-text font-bold text-lg">RAM 1 C1</span><p class="text-3xl font-bold mt-2 mb-4">Rp 15.000</p></div>
+                </div>
+                <div class="animated-element mt-12 themed-bg themed-border border rounded-2xl p-8">
+                    <h3 class="font-bold text-xl themed-text mb-6">Semua Pembelian VPS Termasuk:</h3>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 dark:text-gray-300">
+                        <li class="bonus-item p-2 rounded-lg flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Instalasi Panel Pterodactyl</li>
+                        <li class="bonus-item p-2 rounded-lg flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Egg Bot WA & Minecraft</li>
+                        <li class="bonus-item p-2 rounded-lg flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Website Kustom Sederhana</li>
+                        <li class="bonus-item p-2 rounded-lg flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Script cPanel</li>
+                        <li class="bonus-item p-2 rounded-lg flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Masa Aktif Penuh 30 Hari</li>
+                        <li class="bonus-item p-2 rounded-lg flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Garansi Resmi 3x Klaim</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="payment" class="py-20">
+             <div class="container mx-auto px-6 lg:px-8">
+                <div class="animated-element text-center">
+                    <h2 class="text-3xl font-bold mb-4">Metode Pembayaran</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 mb-12">Kami menerima berbagai metode pembayaran untuk kemudahan Anda.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8">
+                        <img src="https://files.catbox.moe/1g89lt.jpg" alt="QRIS" class="w-full max-w-[180px] mx-auto rounded-lg mb-4 shadow-lg">
+                        <h3 class="text-xl font-bold">QRIS</h3>
+                        <p class="text-gray-500 dark:text-gray-400">All E-Wallet & M-Banking</p>
+                    </div>
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/DANA_logo.svg/1280px-DANA_logo.svg.png" alt="DANA" class="h-14 mx-auto mb-11 mt-10">
+                        <h3 class="text-xl font-bold">DANA</h3>
+                        <p class="text-gray-500 dark:text-gray-400">Hubungi admin untuk nomor</p>
+                    </div>
+                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8">
+                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/GoPay_logo.svg/1280px-GoPay_logo.svg.png" alt="GOPAY" class="h-10 mx-auto mb-14 mt-12">
+                        <h3 class="text-xl font-bold">GoPay & OVO</h3>
+                        <p class="text-gray-500 dark:text-gray-400">Tersedia melalui QRIS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 lg:px-8">
+                 <div class="animated-element themed-bg themed-border border rounded-2xl p-8 md:p-12 text-center">
+                    <h2 class="text-3xl font-bold mb-4">Siap Memulai Project Anda?</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 mb-8">Hubungi kami melalui WhatsApp atau Telegram untuk konsultasi dan pemesanan. Tim kami siap membantu Anda.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://wa.me/6288293006543" target="_blank" class="gradient-btn w-full sm:w-auto text-center px-8 py-4 rounded-full font-semibold text-white flex items-center justify-center gap-3"><i class="fab fa-whatsapp text-xl"></i> WhatsApp</a>
+                        <a href="https://t.me/zallhosting" target="_blank" class="themed-bg themed-border border-2 w-full sm:w-auto text-center px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-3"><i class="fab fa-telegram text-xl"></i> Telegram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-10">
+        <p class="text-sm text-gray-500 dark:text-gray-400">&copy; 2024 FikXzMods. Dibuat dengan Penuh Dedikasi.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            const body = document.body;
+            
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.classList.add('loaded');
+                    body.classList.add('loaded');
+                }, 500);
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.animated-element').forEach((el, index) => {
+                    el.style.transitionDelay = `${index * 100}ms`;
+                    observer.observe(el);
+                });
+            });
+
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlEl = document.documentElement;
+
+            const setTheme = (theme) => {
+                localStorage.setItem('theme', theme);
+                htmlEl.className = theme;
+                themeIcon.className = `fa-solid ${theme === 'dark' ? 'fa-moon' : 'fa-sun'} text-lg w-5 h-5 themed-text`;
+            };
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
+            themeToggleBtn.addEventListener('click', () => setTheme(localStorage.getItem('theme') === 'dark' ? 'light' : 'dark'));
+
+            // Parallax effect
+            const heroSection = document.getElementById('hero-section');
+            window.addEventListener('scroll', () => {
+                const offset = window.pageYOffset;
+                heroSection.style.backgroundPositionY = offset * 0.7 + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
+
