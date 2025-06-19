@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FikXzMods - Market</title>
+  <meta name="theme-color" content="#4a148c" />
+  <meta name="description" content="FikXzMods Market - Panel, Jasa dan Produk terpercaya." />
+  <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0f0f11;
+      --panel: #18181b;
+      --text: #e5e5e5;
+      --muted: #a0a0a0;
+      --primary: #c084fc;
+      --accent: #7c3aed;
+      --hover: rgba(124, 58, 237, 0.15);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+    body {
+      background: var(--bg) url('https://files.catbox.moe/bwsb2e.jpg') center/cover fixed no-repeat;
+      color: var(--text);
+    }
+    .wrapper {
+      max-width: 1080px;
+      margin: auto;
+      padding: 60px 20px;
+      backdrop-filter: blur(10px);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    section {
+      background-color: var(--panel);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.7s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    section h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+    }
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .list-card {
+      background: var(--hover);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .list-card:hover {
+      background-color: rgba(124, 58, 237, 0.25);
+      transform: scale(1.03);
+    }
+    .list-card .title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .list-card .price {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 40px;
+    }
+    /* AI Popup */
+    #aiToggleBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 50px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+    #aiModal {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 999;
+      background: var(--panel);
+      color: var(--text);
+      width: 320px;
+      max-height: 500px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    #chatMessages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+    #typingIndicator {
+      padding: 8px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrapper">
+    <header>
+      <h1>FikXzMods Marketplace</h1>
+      <p class="subtitle">List Store dan Payment Aing</p>
+    </header>
+    <!-- Konten lain disini -->
+    <footer>
+      <p>&copy; FikXzMods 2024 - 2025. All rights reserved.</p>
+    </footer>
+  </main>  <!-- Tombol & Modal AI --><button id="aiToggleBtn">❓ Bantuan AI</button>
+
+  <div id="aiModal">
+    <div style="background:var(--accent);padding:12px 16px;font-weight:bold;">Asisten AI - FikXzMods</div>
+    <div id="chatMessages"></div>
+    <div style="padding:10px;border-top:1px solid #333;display:flex;gap:8px;">
+      <input id="userInput" type="text" placeholder="Tulis pertanyaan..." style="flex:1;padding:8px;border-radius:6px;border:none;outline:none;background:#1f1f1f;color:#fff;">
+      <button onclick="sendMessage()" style="padding:8px 12px;background:var(--accent);border:none;color:#fff;border-radius:6px;">Kirim</button>
+    </div>
+    <div id="typingIndicator" style="display:none;">AI lagi mikir...</div>
+  </div>  <script>
+    const apiUrl = "https://your-api-endpoint.com/?q=";
+    const aiName = "FikXzAi";
+    const userName = "Pengunjung";
+    const Deppler = "FikXzMods";
+    const chatHistory = [];
+
+    const aiToggleBtn = document.getElementById('aiToggleBtn');
+    const aiModal = document.getElementById('aiModal');
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const typingIndicator = document.getElementById('typingIndicator');
+
+    aiToggleBtn.onclick = () => {
+      aiModal.style.display = aiModal.style.display === 'none' ? 'flex' : 'none';
+    };
+
+    async function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      addMessage('user', message);
+      userInput.value = '';
+      typingIndicator.style.display = 'block';
+
+      try {
+        const promptSystem = `Jenengmu yaiku ${aiName}, sawijining AI sing digawé déning ${Deppler} kanggo dadi asisten virtual...\n\n👥 Jeneng panganggo: ${userName}\n💬 Pesen saka panganggo: ${message}`;
+
+        const response = await fetch(apiUrl + encodeURIComponent(promptSystem));
+        if (!response.ok) throw new Error('Gagal konek server AI');
+
+        const data = await response.json();
+        let aiResponse = data.result || data.data || data.message || '';
+        if (!data.status || !aiResponse) throw new Error('Respons kosong atau salah');
+
+        if (!aiResponse.startsWith(aiName)) aiResponse = `${aiName}: ${aiResponse}`;
+        aiResponse = aiResponse.replace(/\b(kamu|Kamu|Anda|you)\b/gi, userName);
+        if (!aiResponse.includes('Aku ireng lan aku bangga')) aiResponse += `\n\n🖤 Aku ireng lan aku bangga.`;
+
+        addMessage('ai', aiResponse);
+      } catch (err) {
+        console.error(err);
+        addMessage('ai', `${aiName}: Nuwun sewu, ana kesalahan. Coba maneh mengko.`);
+      } finally {
+        typingIndicator.style.display = 'none';
+      }
+    }
+
+    function addMessage(sender, text) {
+      const messageDiv = document.createElement('div');
+      messageDiv.style.marginBottom = '8px';
+      messageDiv.style.padding = '8px 10px';
+      messageDiv.style.borderRadius = '8px';
+      messageDiv.style.background = sender === 'user' ? '#303030' : '#1e1e1e';
+      messageDiv.textContent = text;
+
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      chatHistory.push({ sender, text, timestamp: new Date().toISOString() });
+    }
+  </script></body>
+</html>
