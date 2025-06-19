@@ -1,530 +1,383 @@
-<!DOCTYPE html>
-<html lang="id" class="dark">
+<!DOCTYPE html><html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FikXzMods - Solusi Hosting Profesional</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FikXzMods - Market</title>
+  <meta name="theme-color" content="#4a148c" />
+  <meta name="description" content="FikXzMods Market - Panel, Jasa dan Produk terpercaya." />
+  <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0f0f11;
+      --panel: #18181b;
+      --text: #e5e5e5;
+      --muted: #a0a0a0;
+      --primary: #c084fc;
+      --accent: #7c3aed;
+      --hover: rgba(124, 58, 237, 0.15);
+    }* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+}
 
-    <style>
-        /* === PRO POLISHED CSS SUITE === */
-        :root {
-            /* Primary Accent Colors */
-            --primary-light: #7e22ce; /* purple-600 */
-            --primary-dark: #a855f7;  /* purple-500 */
-            
-            /* Light Mode Palette */
-            --bg-light: #f5f5f5;      /* neutral-100 */
-            --card-light: #ffffff;    /* white */
-            --text-light: #171717;    /* neutral-900 */
-            --subtle-text-light: #737373; /* neutral-500 */
-            --border-light: #e5e5e5;  /* neutral-200 */
+html {
+  scroll-behavior: smooth;
+}
 
-            /* Dark Mode Palette */
-            --bg-dark: #111111;        /* True Black-ish */
-            --card-dark: #1E1E1E;      /* Softer Black */
-            --text-dark: #e5e5e5;      /* neutral-200 */
-            --subtle-text-dark: #a3a3a3; /* neutral-400 */
-            --border-dark: #404040;   /* neutral-700 */
-        }
+body {
+  background: var(--bg) url('https://files.catbox.moe/bwsb2e.jpg') center/cover fixed no-repeat;
+  color: var(--text);
+}
 
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.4s ease, color 0.4s ease;
-            overflow-x: hidden;
-            opacity: 0;
-        }
-        body.loaded {
-            opacity: 1;
-            transition: opacity 0.5s ease-in;
-        }
+.wrapper {
+  max-width: 1080px;
+  margin: auto;
+  padding: 60px 20px;
+  backdrop-filter: blur(10px);
+}
 
-        /* --- Theme Setup --- */
-        .light body { background-color: var(--bg-light); color: var(--text-light); }
-        .dark body { background-color: var(--bg-dark); color: var(--text-dark); }
-        .light .themed-bg { background-color: var(--card-light); }
-        .dark .themed-bg { background-color: var(--card-dark); }
-        .light .themed-text { color: var(--primary-light); }
-        .dark .themed-text { color: var(--primary-dark); }
-        .light .themed-border { border-color: var(--border-light); }
-        .dark .themed-border { border-color: var(--border-dark); }
-        .light .subtle-text { color: var(--subtle-text-light); }
-        .dark .subtle-text { color: var(--subtle-text-dark); }
+header {
+  text-align: center;
+  margin-bottom: 50px;
+}
 
-        /* --- Preloader --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #111111; z-index: 10000;
-            display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.6s ease, visibility 0.6s;
-        }
-        #preloader.loaded { opacity: 0; visibility: hidden; }
-        .loader-logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-dark); animation: pulse 1.5s infinite ease-in-out; }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); }
-        }
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
 
-        /* --- Animations & Interactions --- */
-        .animated-element {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.6s cubic-bezier(0.215, 0.610, 0.355, 1);
-        }
-        .animated-element.in-view { opacity: 1; transform: translateY(0); }
-        
-        .card-interaction { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-        .card-interaction:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
-            border-color: var(--primary-dark);
-        }
-        .light .card-interaction:hover { border-color: var(--primary-light); }
+.subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
 
-        .gradient-btn {
-            background-image: linear-gradient(to right, #7e22ce 0%, #a855f7 51%, #7e22ce 100%);
-            background-size: 200% auto;
-            transition: all 0.4s ease;
-        }
-        .gradient-btn:hover { background-position: right center; transform: scale(1.05); box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
-        
-        .header-glass {
-            backdrop-filter: blur(12px) saturate(150%);
-            -webkit-backdrop-filter: blur(12px) saturate(150%);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        .light .header-glass { background-color: rgba(245, 245, 245, 0.8); }
-        .dark .header-glass { background-color: rgba(17, 17, 17, 0.8); }
-    </style>
+section {
+  background-color: var(--panel);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all 0.7s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+section h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 6px;
+}
+
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.list-card {
+  background: var(--hover);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.list-card:hover {
+  background-color: rgba(124, 58, 237, 0.25);
+  transform: scale(1.03);
+}
+
+.list-card .title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.list-card .price {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.bonus-list li {
+  background-color: rgba(255, 255, 255, 0.04);
+  margin-bottom: 10px;
+  padding: 12px 18px;
+  border-left: 3px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bonus-list li::before {
+  content: '✔';
+  color: var(--primary);
+}
+
+.testimonial-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.testimonial-link:hover {
+  transform: scale(1.05);
+  text-decoration: underline;
+}
+
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.payment-method {
+  background-color: #252525;
+  border-radius: 12px;
+  padding: 16px;
+  width: 200px;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+}
+
+.payment-method:hover {
+  transform: translateY(-5px);
+}
+
+.payment-method img {
+  max-width: 100%;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.contact-btn {
+  background-color: var(--accent);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #6d28d9;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .list-card .title {
+    font-size: 1rem;
+  }
+}
+
+  </style>
 </head>
-<body class="antialiased">
+<body>
+<main class="wrapper">
+  <header>
+    <h2>FikXzMods Marketplace</h2>
+    <p class="subtitle">List Store dan Payment Aing</p>
+  </header>
 
-    <div id="preloader"><div class="loader-logo">FikXzMods</div></div>
+<!-- Section: Script -->
 
-    <header id="header" class="header-glass fixed top-0 left-0 w-full z-50 themed-border border-b">
-        <nav class="container mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
-            <a href="#" aria-label="Beranda" class="flex items-center space-x-3">
-                <svg class="h-8 w-8 themed-text" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25Zm0 17.5c-4.28 0-7.75-3.47-7.75-7.75S7.72 4.25 12 4.25s7.75 3.47 7.75 7.75-3.47 7.75-7.75 7.75Z"/><path d="m10.234 8.25.004-1.5h3.524l-1.5 6h-3.52l1.5-6Z"/></svg>
-                <span class="text-xl font-extrabold themed-text hidden sm:inline">FikXzMods</span>
-            </a>
-            <div class="flex items-center space-x-4">
-                <a href="#contact" class="gradient-btn hidden sm:inline-block px-5 py-2.5 rounded-full font-semibold text-sm text-white">Hubungi Kami</a>
-                <button id="theme-toggle-btn" aria-label="Ganti Tema" class="themed-bg themed-border border p-2 rounded-full focus:outline-none">
-                    <i id="theme-icon" class="fa-solid fa-moon text-lg w-5 h-5 themed-text"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
+<section>
+  <h2>FikXzBotzV2</h2>
 
-    <main class="pt-20">
-        <section class="min-h-[80vh] flex items-center justify-center text-center relative">
-            <div class="container mx-auto px-6 lg:px-8 animated-element">
-                <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6">
-                    <span class="block">FikXzModssTzy</span>
-                    <span class="themed-text block">Website.</span>
-                </h1>
-                <p class="max-w-2xl mx-auto text-lg md:text-xl subtle-text">List Produk and Payment</p>
-            </div>
-        </section>
+  <img src="https://files.catbox.moe/x0du61.jpg" alt="SC FikXzBotz" style="width: 100%; max-width: 600px; border-radius: 12px; margin: 0 auto 20px; display: block; box-shadow: 0 0 12px rgba(0,0,0,0.4);" />
 
-        <section id="Panel" class="py-24">
-            <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="animated-element text-4xl font-extrabold tracking-tight">Panel Run Bot Whatsapp</h2>
-                    <p class="animated-element subtle-text mt-4 max-w-xl mx-auto">List Daftar Harga</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 1GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 1.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 2GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 2.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 3GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 3.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 4GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 4.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 5GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 5.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 6GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 6.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 7GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 7.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 8GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 8.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 9GB</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 9.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM UNLIMITED</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 10.000</p></div>
-                </div>
-                <div class="animated-element mt-12 themed-bg themed-border border rounded-2xl p-8">
-                    <h3 class="font-bold text-xl themed-text mb-6">Benefit Pemebelian Panel:</h3>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 subtle-text">
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Panel Bergaransi selama masa 30h hari</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Anti Colong Jika ada masalaha lapor saja</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Fast Respon untuk panel nya</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Panel di delete minta Createkan ulang saja</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="vps" class="py-24">
-            <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="animated-element text-4xl font-extrabold tracking-tight">VPS Digital Ocean</h2>
-                    <p class="animated-element subtle-text mt-4 max-w-xl mx-auto">List Vps dan harga.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 32 C8</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 60.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 16 C8</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 55.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 16 C4</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 50.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 8 C4</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 45.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 4 C2</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 30.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 1 C1</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 15.000</p></div>
-                </div>
-                <div class="animated-element mt-12 themed-bg themed-border border rounded-2xl p-8">
-                    <h3 class="font-bold text-xl themed-text mb-6">Semua Pembelian VPS Termasuk:</h3>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 subtle-text">
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Instalasi Panel Pterodactyl</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Egg Bot WA & Minecraft</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Website Kustom Sederhana</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Script cPanel</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Masa Aktif Penuh 30 Hari</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Garansi Resmi 3x Klaim</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+  <div class="list-grid">
+    <div class="list-card">
+      <div class="title">💰 Price: Rp 30.000</div>
+      <div class="price">[ Free Update ]</div>
+    </div>
+    <div class="list-card">
+      <div class="title">💰 Price: Rp 25.000</div>
+      <div class="price">[ No Free Update ]</div>
+    </div>
+    </div>
+  </div>
 
-        <section id="payment" class="py-24">
-             <div class="container mx-auto px-6 lg:px-8">
-                <div class="animated-element text-center mb-16">
-                    <h2 class="text-4xl font-extrabold tracking-tight">Metode Pembayaran</h2>
-                    <p class="subtle-text mt-4 max-w-xl mx-auto">Kami menerima berbagai metode pembayaran untuk kemudahan Anda.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="animated-element themed-bg themed-border border rounded-2xl p-8 flex flex-col items-center justify-center">
-                        <img src="https://files.catbox.moe/1g89lt.jpg" alt="QRIS" class="w-full max-w-[180px] rounded-lg mb-4 shadow-lg">
-                        <h3 class="text-xl font-bold">QRIS</h3>
-                        <p class="subtle-text">All E-Wallet & M-Banking</p>
-                    </div>
-                    <div class<!DOCTYPE html>
-<html lang="id" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FikXzMods - Solusi Hosting Profesional</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <h3 class="bonus-title">🚀 Special Features & Benefits</h3>
+  <ul class="bonus-list">
+    <li>Downloader, Stalker, Tebakan Game</li>
+    <li>AI, Audio, Mini Games</li>
+    <li>Role System, Panel Creator</li>
+    <li>No Enkripsi, Full Button UI</li>
+    <li>And More...</li>
+  </ul>
 
-    <style>
-        /* === PRO POLISHED CSS SUITE === */
-        :root {
-            /* Primary Accent Colors */
-            --primary-light: #7e22ce; /* purple-600 */
-            --primary-dark: #a855f7;  /* purple-500 */
-            
-            /* Light Mode Palette */
-            --bg-light: #f5f5f5;      /* neutral-100 */
-            --card-light: #ffffff;    /* white */
-            --text-light: #171717;    /* neutral-900 */
-            --subtle-text-light: #737373; /* neutral-500 */
-            --border-light: #e5e5e5;  /* neutral-200 */
+</section>
 
-            /* Dark Mode Palette */
-            --bg-dark: #111111;        /* True Black-ish */
-            --card-dark: #1E1E1E;      /* Softer Black */
-            --text-dark: #e5e5e5;      /* neutral-200 */
-            --subtle-text-dark: #a3a3a3; /* neutral-400 */
-            --border-dark: #404040;   /* neutral-700 */
-        }
+  <!-- Section: List RAM dan Harga Panel Ptero -->
+  <section>
+    <h2>List RAM dan Harga Panel Ptero</h2>
+    <div class="list-grid">
+      <div class="list-card"><div class="title">1 GB</div><div class="price">Rp 1.000</div></div>
+      <div class="list-card"><div class="title">2 GB</div><div class="price">Rp 2.000</div></div>
+      <div class="list-card"><div class="title">3 GB</div><div class="price">Rp 3.000</div></div>
+      <div class="list-card"><div class="title">4 GB</div><div class="price">Rp 4.000</div></div>
+      <div class="list-card"><div class="title">5 GB</div><div class="price">Rp 5.000</div></div>
+      <div class="list-card"><div class="title">6 GB</div><div class="price">Rp 6.000</div></div>
+      <div class="list-card"><div class="title">7 GB</div><div class="price">Rp 7.000</div></div>
+      <div class="list-card"><div class="title">8 GB</div><div class="price">Rp 8.000</div></div>
+      <div class="list-card"><div class="title">9 GB</div><div class="price">Rp 9.000</div></div>
+      <div class="list-card"><div class="title">Unli</div><div class="price">Rp 10.000</div></div>
+    </div>
 
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.4s ease, color 0.4s ease;
-            overflow-x: hidden;
-            opacity: 0;
-        }
-        body.loaded {
-            opacity: 1;
-            transition: opacity 0.5s ease-in;
-        }
+    <h3 class="bonus-title">Bonus Pembelian</h3>
+    <ul class="bonus-list">
+      <li>Bergaransi</li>
+      <li>Anti delay karna spek vps c4r16</li>
+      <li>Panel Mokad Minta Create lagi aja</li>
+    </ul>
+  </section>
 
-        /* --- Theme Setup --- */
-        .light body { background-color: var(--bg-light); color: var(--text-light); }
-        .dark body { background-color: var(--bg-dark); color: var(--text-dark); }
-        .light .themed-bg { background-color: var(--card-light); }
-        .dark .themed-bg { background-color: var(--card-dark); }
-        .light .themed-text { color: var(--primary-light); }
-        .dark .themed-text { color: var(--primary-dark); }
-        .light .themed-border { border-color: var(--border-light); }
-        .dark .themed-border { border-color: var(--border-dark); }
-        .light .subtle-text { color: var(--subtle-text-light); }
-        .dark .subtle-text { color: var(--subtle-text-dark); }
+  <!-- Section: adp own -->
+  
+<section>
+  <h2>List Panel Ptero</h2>
+  <div class="list-grid">
+    <div class="list-card">
+      <div class="title">RESELLER PANEL PUBLIC</div>
+      <div class="price">Rp 4.000</div>
+    </div>
+    <div class="list-card">
+      <div class="title">RESELLER PANEL PRIVATE</div>
+      <div class="price">Rp 7.000</div>
+    </div>
+    <div class="list-card">
+      <div class="title">ADMIN PANEL</div>
+      <div class="price">Rp 10.000</div>
+    </div>
+    <div class="list-card">
+      <div class="title">PT PANEL</div>
+      <div class="price">Rp 15.000</div>
+    </div>
+    <div class="list-card">
+      <div class="title">OWNER PANEL</div>
+      <div class="price">Rp 20.000</div>
+    </div>
+  </div>
 
-        /* --- Preloader --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #111111; z-index: 10000;
-            display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.6s ease, visibility 0.6s;
-        }
-        #preloader.loaded { opacity: 0; visibility: hidden; }
-        .loader-logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-dark); animation: pulse 1.5s infinite ease-in-out; }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); }
-        }
+  <h3 class="bonus-title">Bonus Pembelian</h3>
+  <ul class="bonus-list">
+    <li>PERMANEN</li>
+    <li>ANTI DELAY (VPS RAM 16 GB C4)</li>
+    <li>BISA PATUNGAN</li>
+    <li>ANTI KE COLONG SC</li>
+  </ul>
 
-        /* --- Animations & Interactions --- */
-        .animated-element {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.6s cubic-bezier(0.215, 0.610, 0.355, 1);
-        }
-        .animated-element.in-view { opacity: 1; transform: translateY(0); }
-        
-        .card-interaction { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-        .card-interaction:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
-            border-color: var(--primary-dark);
-        }
-        .light .card-interaction:hover { border-color: var(--primary-light); }
+  <p class="note">NOTE: Bisa nego asal masuk akal</p>
+</section> 
 
-        .gradient-btn {
-            background-image: linear-gradient(to right, #7e22ce 0%, #a855f7 51%, #7e22ce 100%);
-            background-size: 200% auto;
-            transition: all 0.4s ease;
-        }
-        .gradient-btn:hover { background-position: right center; transform: scale(1.05); box-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
-        
-        .header-glass {
-            backdrop-filter: blur(12px) saturate(150%);
-            -webkit-backdrop-filter: blur(12px) saturate(150%);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        .light .header-glass { background-color: rgba(245, 245, 245, 0.8); }
-        .dark .header-glass { background-color: rgba(17, 17, 17, 0.8); }
-    </style>
-</head>
-<body class="antialiased">
+  <!-- Section: Jasa dan Produk Lainnya -->
+  <section>
+    <h2>Jasa dan Produk Lainnya</h2>
+    <div class="list-grid">
+      <div class="list-card"><div class="title">JASA RENAME SCRIPT</div><div class="price">Rp 6.000</div></div>
+      <div class="list-card"><div class="title">JASA SUNTIK SOSMED</div><div class="price">Harga? Tanyakan Saja</div></div>
+      <div class="list-card"><div class="title">MURID SUNTIK</div><div class="price">Rp 5.000</div></div>
+    </div>
+  </section>
 
-    <div id="preloader"><div class="loader-logo">FikXzMods</div></div>
+  <!-- Section: Testimoni Pembeli -->
+  <section>
+    <h2>Testimoni Pembeli</h2>
+    <a href="https://whatsapp.com/channel/0029VbAM0frDZ4LhTSSW4a1t" class="testimonial-link" target="_blank">
+      <i class="fas fa-external-link-alt"></i> Lihat Testimoni Pembeli di Channel WhatsApp Kami
+    </a>
+  </section>
 
-    <header id="header" class="header-glass fixed top-0 left-0 w-full z-50 themed-border border-b">
-        <nav class="container mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
-            <a href="#" aria-label="Beranda" class="flex items-center space-x-3">
-                <svg class="h-8 w-8 themed-text" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25Zm0 17.5c-4.28 0-7.75-3.47-7.75-7.75S7.72 4.25 12 4.25s7.75 3.47 7.75 7.75-3.47 7.75-7.75 7.75Z"/><path d="m10.234 8.25.004-1.5h3.524l-1.5 6h-3.52l1.5-6Z"/></svg>
-                <span class="text-xl font-extrabold themed-text hidden sm:inline">FikXzMods</span>
-            </a>
-            <div class="flex items-center space-x-4">
-                <a href="#contact" class="gradient-btn hidden sm:inline-block px-5 py-2.5 rounded-full font-semibold text-sm text-white">Hubungi Kami</a>
-                <button id="theme-toggle-btn" aria-label="Ganti Tema" class="themed-bg themed-border border p-2 rounded-full focus:outline-none">
-                    <i id="theme-icon" class="fa-solid fa-moon text-lg w-5 h-5 themed-text"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
+  <!-- Section: Metode Pembayaran -->
+  <section>
+    <h2>Metode Pembayaran</h2>
+    <div class="payment-methods">
+      <div class="payment-method">
+        <img src="https://files.catbox.moe/1g89lt.jpg" alt="QRIS">
+        <h3>QRIS</h3>
+        <p>Scan kode QR untuk pembayaran</p>
+      </div>
+      <div class="payment-method">
+        <i class="fas fa-wallet"></i>
+        <h3>DANA</h3>
+        <p>088293006543</p>
+      </div>
+      <div class="payment-method">
+        <i class="fas fa-money-bill-wave"></i>
+        <h3>Cash</h3>
+      </div>
+    </div>
+  </section>
 
-    <main class="pt-20">
-        <section class="min-h-[80vh] flex items-center justify-center text-center relative">
-            <div class="container mx-auto px-6 lg:px-8 animated-element">
-                <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6">
-                    <span class="block">Layanan Hosting</span>
-                    <span class="themed-text block">Generasi Berikutnya.</span>
-                </h1>
-                <p class="max-w-2xl mx-auto text-lg md:text-xl subtle-text">
-                    Solusi server dan hosting profesional untuk semua kebutuhan Anda. Cepat, Andal, dan Terjangkau.
-                </p>
-            </div>
-        </section>
+<div class="contact-buttons">
+  <a href="https://wa.me/6288293006543" class="contact-btn"><i class="fab fa-whatsapp"></i> Whatsapp Utama</a>
+  <a href="https://wa.me/989223100110" class="contact-btn"><i class="fab fa-whatsapp"></i> Whatsapp 2</a>
+  <a href="https://t.me/FikXzModzz" class="contact-btn"><i class="fab fa-telegram"></i> Telegram</a>
+</div>
 
-        <section id="vps" class="py-24">
-            <div class="container mx-auto px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="animated-element text-4xl font-extrabold tracking-tight">VPS Digital Ocean</h2>
-                    <p class="animated-element subtle-text mt-4 max-w-xl mx-auto">Pilih paket dengan performa terbaik yang sesuai dengan kebutuhan Anda.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 32 C8</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 60.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 16 C8</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 55.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 16 C4</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 50.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 8 C4</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 45.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 4 C2</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 30.000</p></div>
-                    <div class="animated-element card-interaction themed-bg themed-border border rounded-2xl p-8"><span class="themed-text font-bold text-lg">RAM 1 C1</span><p class="text-4xl font-extrabold mt-2 mb-4">Rp 15.000</p></div>
-                </div>
-                <div class="animated-element mt-12 themed-bg themed-border border rounded-2xl p-8">
-                    <h3 class="font-bold text-xl themed-text mb-6">Semua Pembelian VPS Termasuk:</h3>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 subtle-text">
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Instalasi Panel Pterodactyl</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Egg Bot WA & Minecraft</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Website Kustom Sederhana</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Gratis Script cPanel</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Masa Aktif Penuh 30 Hari</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check-circle themed-text mr-4"></i>Garansi Resmi 3x Klaim</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+<footer>
+  <p>&copy; FikXzMods 2024 - 2025. All rights reserved.</p>
+  <p>100% FikXzMods Amanah</p>
+</footer>
 
-        <section id="payment" class="py-24">
-             <div class="container mx-auto px-6 lg:px-8">
-                <div class="animated-element text-center mb-16">
-                    <h2 class="text-4xl font-extrabold tracking-tight">Metode Pembayaran</h2>
-                    <p class="subtle-text mt-4 max-w-xl mx-auto">Kami menerima berbagai metode pembayaran untuk kemudahan Anda.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="animated-element themed-bg themed-border border rounded-2xl p-8 flex flex-col items-center justify-center">
-                        <img src="https://files.catbox.moe/1g89lt.jpg" alt="QRIS" class="w-full max-w-[180px] rounded-lg mb-4 shadow-lg">
-                        <h3 class="text-xl font-bold">QRIS</h3>
-                        <p class="subtle-text">All E-Wallet & M-Banking</p>
-                    </div>
-                    <div class="animated-element themed-bg themed-border border rounded-2xl p-8 flex flex-col items-center justify-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/DANA_logo.svg/1280px-DANA_logo.svg.png" alt="DANA" class="h-10 my-8">
-                        <h3 class="text-xl font-bold">DANA</h3>
-                        <p class="subtle-text">Hubungi admin untuk nomor</p>
-                    </div>
-                    <div class="animated-element themed-bg themed-border border rounded-2xl p-8 flex flex-col items-center justify-center">
-                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/GoPay_logo.svg/1280px-GoPay_logo.svg.png" alt="GOPAY" class="h-8 my-9">
-                        <h3 class="text-xl font-bold">GoPay & OVO</h3>
-                        <p class="subtle-text">Tersedia melalui QRIS</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-24">
-            <div class="container mx-auto px-6 lg:px-8">
-                 <div class="animated-element themed-bg themed-border border rounded-2xl p-8 md:p-16 text-center">
-                    <h2 class="text-4xl font-extrabold tracking-tight mb-4">Siap Memulai Project Anda?</h2>
-                    <p class="subtle-text max-w-2xl mx-auto mb-8">Hubungi kami melalui WhatsApp atau Telegram untuk konsultasi dan pemesanan. Tim kami siap membantu Anda.</p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://wa.me/6288293006543" target="_blank" class="gradient-btn w-full sm:w-auto text-center px-8 py-4 rounded-full font-semibold text-white flex items-center justify-center gap-3"><i class="fab fa-whatsapp text-xl"></i> WhatsApp</a>
-                        <a href="https://t.me/zallhosting" target="_blank" class="themed-bg themed-border border-2 w-full sm:w-auto text-center px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors flex items-center justify-center gap-3"><i class="fab fa-telegram text-xl"></i> Telegram</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="text-center py-10">
-        <p class="text-sm subtle-text">&copy; 2024 FikXzMods. Dibuat dengan Penuh Dedikasi.</p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const preloader = document.getElementById('preloader');
-            const body = document.body;
-            
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    preloader.classList.add('loaded');
-                    body.classList.add('loaded');
-                }, 400);
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('in-view');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-                document.querySelectorAll('.animated-element').forEach((el, index) => {
-                    el.style.transitionDelay = `${index * 50}ms`;
-                    observer.observe(el);
-                });
-            });
-
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const themeIcon = document.getElementById('theme-icon');
-            const htmlEl = document.documentElement;
-
-            const setTheme = (theme) => {
-                localStorage.setItem('theme', theme);
-                htmlEl.className = theme;
-                themeIcon.className = `fa-solid ${theme === 'dark' ? 'fa-moon' : 'fa-sun'} text-lg w-5 h-5 themed-text`;
-            };
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            setTheme(savedTheme);
-            themeToggleBtn.addEventListener('click', () => setTheme(localStorage.getItem('theme') === 'dark' ? 'light' : 'dark'));
+  </main>  <script>
+    document.querySelectorAll('section').forEach(sec => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
-    </script>
-</body>
+      }, { threshold: 0.1 });
+      observer.observe(sec);
+    });
+  </script></body>
 </html>
-
-="animated-element themed-bg themed-border border rounded-2xl p-8 flex flex-col items-center justify-center">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/DANA_logo.svg/1280px-DANA_logo.svg.png" alt="DANA" class="h-10 my-8">
-                        <h3 class="text-xl font-bold">DANA</h3>
-                        <p class="subtle-text">Hubungi admin untuk nomor</p>
-                    </div>
-                    <div class="animated-element themed-bg themed-border border rounded-2xl p-8 flex flex-col items-center justify-center">
-                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/GoPay_logo.svg/1280px-GoPay_logo.svg.png" alt="GOPAY" class="h-8 my-9">
-                        <h3 class="text-xl font-bold">GoPay & OVO</h3>
-                        <p class="subtle-text">Tersedia melalui QRIS</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-24">
-            <div class="container mx-auto px-6 lg:px-8">
-                 <div class="animated-element themed-bg themed-border border rounded-2xl p-8 md:p-16 text-center">
-                    <h2 class="text-4xl font-extrabold tracking-tight mb-4">Siap Memulai Project Anda?</h2>
-                    <p class="subtle-text max-w-2xl mx-auto mb-8">Hubungi kami melalui WhatsApp atau Telegram untuk konsultasi dan pemesanan. Tim kami siap membantu Anda.</p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="https://wa.me/6288293006543" target="_blank" class="gradient-btn w-full sm:w-auto text-center px-8 py-4 rounded-full font-semibold text-white flex items-center justify-center gap-3"><i class="fab fa-whatsapp text-xl"></i> WhatsApp</a>
-                        <a href="https://t.me/zallhosting" target="_blank" class="themed-bg themed-border border-2 w-full sm:w-auto text-center px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors flex items-center justify-center gap-3"><i class="fab fa-telegram text-xl"></i> Telegram</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="text-center py-10">
-        <p class="text-sm subtle-text">&copy; 2024 FikXzMods. Dibuat dengan Penuh Dedikasi.</p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const preloader = document.getElementById('preloader');
-            const body = document.body;
-            
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    preloader.classList.add('loaded');
-                    body.classList.add('loaded');
-                }, 400);
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('in-view');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-                document.querySelectorAll('.animated-element').forEach((el, index) => {
-                    el.style.transitionDelay = `${index * 50}ms`;
-                    observer.observe(el);
-                });
-            });
-
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const themeIcon = document.getElementById('theme-icon');
-            const htmlEl = document.documentElement;
-
-            const setTheme = (theme) => {
-                localStorage.setItem('theme', theme);
-                htmlEl.className = theme;
-                themeIcon.className = `fa-solid ${theme === 'dark' ? 'fa-moon' : 'fa-sun'} text-lg w-5 h-5 themed-text`;
-            };
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            setTheme(savedTheme);
-            themeToggleBtn.addEventListener('click', () => setTheme(localStorage.getItem('theme') === 'dark' ? 'light' : 'dark'));
-        });
-    </script>
-</body>
-</html>
-
