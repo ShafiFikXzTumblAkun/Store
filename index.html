@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FikXzMods - Market</title>
-  <meta name="theme-color" content="#4a148c" />
-  <meta name="description" content="FikXzMods Market - Panel, Jasa dan Produk terpercaya." />
-  <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png" />
+  <meta name="theme-color" content="#4a148c">
+  <meta name="description" content="FikXzMods Market - Panel, Jasa dan Produk terpercaya.">
+  <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
       --bg: #0f0f11;
@@ -120,40 +120,6 @@
       content: '✔';
       color: var(--primary);
     }
-    .testimonial-link {
-      color: var(--primary);
-      font-weight: 600;
-      text-align: center;
-      display: block;
-      margin-top: 20px;
-      transition: all 0.3s ease-in-out;
-    }
-    .testimonial-link:hover {
-      transform: scale(1.05);
-      text-decoration: underline;
-    }
-    .payment-methods {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .payment-method {
-      background-color: #252525;
-      border-radius: 12px;
-      padding: 16px;
-      width: 200px;
-      text-align: center;
-      transition: 0.3s ease-in-out;
-    }
-    .payment-method:hover {
-      transform: translateY(-5px);
-    }
-    .payment-method img {
-      max-width: 100%;
-      margin-bottom: 12px;
-      border-radius: 6px;
-    }
     .contact-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -208,16 +174,57 @@
       <h1>FikXzMods Marketplace</h1>
       <p class="subtitle">List Store dan Payment Aing</p>
     </header>
-    <!-- Sections go here (you can paste them from previous content) -->
+
+    <section>
+      <h2>Produk Panel RAM</h2>
+      <div class="list-grid">
+        <div class="list-card"><div class="title">1 GB</div><div class="price">Rp 1.000</div></div>
+        <div class="list-card"><div class="title">2 GB</div><div class="price">Rp 2.000</div></div>
+        <div class="list-card"><div class="title">3 GB</div><div class="price">Rp 3.000</div></div>
+        <div class="list-card"><div class="title">4 GB</div><div class="price">Rp 4.000</div></div>
+        <div class="list-card"><div class="title">5 GB</div><div class="price">Rp 5.000</div></div>
+        <div class="list-card"><div class="title">6 GB</div><div class="price">Rp 6.000</div></div>
+        <div class="list-card"><div class="title">7 GB</div><div class="price">Rp 7.000</div></div>
+        <div class="list-card"><div class="title">8 GB</div><div class="price">Rp 8.000</div></div>
+        <div class="list-card"><div class="title">9 GB</div><div class="price">Rp 9.000</div></div>
+        <div class="list-card"><div class="title">Unli</div><div class="price">Rp 10.000</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Script FikXzBotzV2</h2>
+      <img src="https://files.catbox.moe/x0du61.jpg" alt="SC FikXzBotz" style="width: 100%; max-width: 600px; border-radius: 12px; margin: 0 auto 20px; display: block; box-shadow: 0 0 12px rgba(0,0,0,0.4);" />
+      <div class="list-grid">
+        <div class="list-card"><div class="title">💰 Price: Rp 30.000</div><div class="price">[ Free Update ]</div></div>
+        <div class="list-card"><div class="title">💰 Price: Rp 25.000</div><div class="price">[ No Free Update ]</div></div>
+      </div>
+      <h3 class="bonus-title">🚀 Special Features & Benefits</h3>
+      <ul class="bonus-list">
+        <li>Downloader, Stalker, Tebakan Game</li>
+        <li>AI, Audio, Mini Games</li>
+        <li>Role System, Panel Creator</li>
+        <li>No Enkripsi, Full Button UI</li>
+        <li>And More...</li>
+      </ul>
+    </section>
+
+    <div class="contact-buttons">
+      <a href="https://wa.me/6288293006543" class="contact-btn"><i class="fab fa-whatsapp"></i> Whatsapp Utama</a>
+      <a href="https://wa.me/989223100110" class="contact-btn"><i class="fab fa-whatsapp"></i> Whatsapp 2</a>
+      <a href="https://t.me/FikXzModzz" class="contact-btn"><i class="fab fa-telegram"></i> Telegram</a>
+    </div>
+
     <footer>
       <p>&copy; FikXzMods 2024 - 2025. All rights reserved.</p>
       <p>100% FikXzMods Amanah</p>
     </footer>
   </main>
+
   <audio id="mysound" src="https://files.catbox.moe/qtg2mj.mp3" preload="auto" loop></audio>
   <div id="sound-toggle">
     <button id="toggle-sound">🔊</button>
   </div>
+
   <script>
     document.querySelectorAll('section').forEach(sec => {
       const observer = new IntersectionObserver(entries => {
@@ -229,8 +236,10 @@
       }, { threshold: 0.1 });
       observer.observe(sec);
     });
+
     const audio = document.getElementById("mysound");
     const toggleBtn = document.getElementById("toggle-sound");
+
     window.addEventListener("DOMContentLoaded", () => {
       audio.play().catch(() => {
         document.body.addEventListener("click", () => {
@@ -238,6 +247,7 @@
         }, { once: true });
       });
     });
+
     toggleBtn.addEventListener("click", () => {
       audio.muted = !audio.muted;
       toggleBtn.textContent = audio.muted ? "🔇" : "🔊";
