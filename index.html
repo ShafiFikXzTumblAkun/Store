@@ -458,7 +458,7 @@ const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
         if (!aiResponse.startsWith(aiName)) aiResponse = `${aiName}: ${aiResponse}`;
         aiResponse = aiResponse.replace(/\b(kamu|Kamu|Anda|you)\b/gi, userName);
 
-        addMessage('ai','aiResponse');
+        addMessage('ai', aiResponse);
       } catch (err) {
         console.error(err);
         addMessage('ai',`${aiName}: terjadi kesalahan.`);
