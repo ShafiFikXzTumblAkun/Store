@@ -276,7 +276,7 @@
 
     <!-- Section: Script -->
     <section>
-      <h2>FikXzBotzV2</h2>
+      <h2>Script FikXzBotzV2</h2>
       <img src="https://files.catbox.moe/x0du61.jpg" alt="SC FikXzBotz" style="width: 100%; max-width: 600px; border-radius: 12px; margin: 0 auto 20px; display: block; box-shadow: 0 0 12px rgba(0,0,0,0.4);" />
       <div class="list-grid">
         <div class="list-card">
@@ -458,10 +458,10 @@ const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
         if (!aiResponse.startsWith(aiName)) aiResponse = `${aiName}: ${aiResponse}`;
         aiResponse = aiResponse.replace(/\b(kamu|Kamu|Anda|you)\b/gi, userName);
 
-        addMessage('ai', aiResponse);
+        addMessage('aiResponse');
       } catch (err) {
         console.error(err);
-        addMessage('ai', `${aiName}: Nuwun sewu, ana kesalahan. Coba maneh mengko.`);
+        addMessage('ai', `${aiName}: terjadi kesalahan.`);
       } finally {
         typingIndicator.style.display = 'none';
       }
