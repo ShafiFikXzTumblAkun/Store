@@ -293,8 +293,8 @@
     </div>
     <div id="typingIndicator" style="display:none;">AI lagi mikir...</div>
   </div>  <script>
-    const apiUrl = "https://your-api-endpoint.com/?q=";
-    const aiName = "FikXzAi";
+    const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
+    const aiName = "FikXz Ai";
     const userName = "Pengunjung";
     const Deppler = "FikXzMods";
     const chatHistory = [];
@@ -318,7 +318,7 @@
       typingIndicator.style.display = 'block';
 
       try {
-        const promptSystem = `Jenengmu yaiku ${aiName}, sawijining AI sing digawé déning ${Deppler} kanggo dadi asisten virtual...\n\n👥 Jeneng panganggo: ${userName}\n💬 Pesen saka panganggo: ${message}`;
+        const promptSystem = `Nama Kamu adalah ${aiName}, kamu sebuah Ai yang di buat oleh ${Deppler}, kamu di ciptakan Untuk Membantu Pelanggan...\nPosisisi kamu sekarang ada di Web dan Tugas Mu Adalah Melayani Mereka\nberikan informasi yang valid!\n\n👥 Jeneng panganggo: ${userName}\n💬 Pesen saka panganggo: ${message}`;
 
         const response = await fetch(apiUrl + encodeURIComponent(promptSystem));
         if (!response.ok) throw new Error('Gagal konek server AI');
