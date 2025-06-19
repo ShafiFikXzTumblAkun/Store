@@ -1,10 +1,14 @@
-<!DOCTYPE html><html lang="id"><head>
+<!DOCTYPE html>
+<html lang="id">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FikXzMods - Market</title>
   <meta name="theme-color" content="#4a148c" />
   <meta name="description" content="FikXzMods Market - Panel, Jasa dan Produk terpercaya." />
   <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -17,37 +21,48 @@
       --accent: #7c3aed;
       --hover: rgba(124, 58, 237, 0.15);
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Outfit', sans-serif;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--bg) url('https://files.catbox.moe/bwsb2e.jpg') center/cover fixed no-repeat;
       color: var(--text);
     }
+
     .wrapper {
       max-width: 1080px;
       margin: auto;
       padding: 60px 20px;
       backdrop-filter: blur(10px);
     }
+
     header {
       text-align: center;
       margin-bottom: 50px;
     }
+
     header h1 {
       font-size: 2.8rem;
       font-weight: 700;
       color: var(--primary);
       letter-spacing: 1px;
     }
+
     .subtitle {
       font-size: 1rem;
       color: var(--muted);
       margin-top: 10px;
     }
+
     section {
       background-color: var(--panel);
       border-radius: 14px;
@@ -58,10 +73,12 @@
       transform: translateX(-40px);
       transition: all 0.7s ease-out;
     }
+
     section.visible {
       opacity: 1;
       transform: translateX(0);
     }
+
     section h2 {
       font-size: 1.5rem;
       color: var(--primary);
@@ -69,37 +86,124 @@
       border-bottom: 2px solid var(--accent);
       padding-bottom: 6px;
     }
+
     .list-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
     }
+
     .list-card {
       background: var(--hover);
       border-left: 4px solid var(--accent);
       border-radius: 12px;
       padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
     }
+
     .list-card:hover {
       background-color: rgba(124, 58, 237, 0.25);
       transform: scale(1.03);
     }
+
     .list-card .title {
       font-weight: 600;
       font-size: 1.05rem;
       color: var(--text);
       margin-bottom: 6px;
     }
+
     .list-card .price {
       font-size: 0.95rem;
       color: var(--muted);
     }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-      margin-top: 40px;
+
+    .bonus-list li {
+      background-color: rgba(255, 255, 255, 0.04);
+      margin-bottom: 10px;
+      padding: 12px 18px;
+      border-left: 3px solid var(--primary);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+
+    .bonus-list li::before {
+      content: '✔';
+      color: var(--primary);
+    }
+
+    .testimonial-link {
+      color: var(--primary);
+      font-weight: 600;
+      text-align: center;
+      display: block;
+      margin-top: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .testimonial-link:hover {
+      transform: scale(1.05);
+      text-decoration: underline;
+    }
+
+    .payment-methods {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .payment-method {
+      background-color: #252525;
+      border-radius: 12px;
+      padding: 16px;
+      width: 200px;
+      text-align: center;
+      transition: 0.3s ease-in-out;
+    }
+
+    .payment-method:hover {
+      transform: translateY(-5px);
+    }
+
+    .payment-method img {
+      max-width: 100%;
+      margin-bottom: 12px;
+      border-radius: 6px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .contact-btn {
+      background-color: var(--accent);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background-color: #6d28d9;
+      transform: scale(1.05);
+    }
+    
     #aiToggleBtn {
       position: fixed;
       bottom: 20px;
@@ -113,6 +217,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       cursor: pointer;
     }
+    
     #aiModal {
       display: none;
       position: fixed;
@@ -129,17 +234,36 @@
       display: flex;
       flex-direction: column;
     }
+    
     #chatMessages {
       flex: 1;
       padding: 10px;
       overflow-y: auto;
       font-size: 0.9rem;
     }
+    
     #typingIndicator {
       padding: 8px;
       font-size: 0.85rem;
       color: var(--muted);
       text-align: center;
+    }
+    
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .list-card .title {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -276,11 +400,15 @@
       <a href="https://wa.me/989223100110" class="contact-btn"><i class="fab fa-whatsapp"></i> Whatsapp 2</a>
       <a href="https://t.me/FikXzModzz" class="contact-btn"><i class="fab fa-telegram"></i> Telegram</a>
     </div>
-    
+
+    <!-- Footer -->
     <footer>
       <p>&copy; FikXzMods 2024 - 2025. All rights reserved.</p>
+      <p>100% FikXzMods Amanah</p>
     </footer>
-  </main><button id="aiToggleBtn">❓ Bantuan AI</button>
+  </main>
+
+    </main><button id="aiToggleBtn">❓ Bantuan AI</button>
 
   <div id="aiModal">
     <div style="background:var(--accent);padding:12px 16px;font-weight:bold;">Asisten AI - FikXzMods</div>
@@ -290,8 +418,10 @@
       <button onclick="sendMessage()" style="padding:8px 12px;background:var(--accent);border:none;color:#fff;border-radius:6px;">Kirim</button>
     </div>
     <div id="typingIndicator" style="display:none;">AI lagi mikir...</div>
-  </div>  <script>
-    const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
+  </div>
+  <script>
+
+const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
     const aiName = "FikXz Ai";
     const userName = "Pengunjung";
     const Deppler = "FikXzMods";
@@ -310,12 +440,13 @@
     async function sendMessage() {
       const message = userInput.value.trim();
       if (!message) return;
+
       addMessage('user', message);
       userInput.value = '';
       typingIndicator.style.display = 'block';
 
       try {
-        const promptSystem = `Nama Kamu adalah ${aiName}, kamu sebuah Ai yang di buat oleh ${Deppler}, kamu di ciptakan Untuk Membantu Pelanggan.\n\nPosisi kamu sekarang ada di Website dan Tugasmu adalah memberikan panduan, penjelasan fitur, dan informasi valid yang dibutuhkan pelanggan.\n\n👥 Nama Pengguna: ${userName}\n💬 Pertanyaan: ${message}`;
+        const promptSystem = `Nama Kamu adalah ${aiName}, kamu sebuah Ai yang di buat oleh ${Deppler}. Tugas kamu adalah membantu pengunjung web dengan memberikan informasi valid dan panduan tentang semua fitur di website ini.\n\nPengguna: ${userName}\nPertanyaan: ${message}`;
 
         const response = await fetch(apiUrl + encodeURIComponent(promptSystem));
         if (!response.ok) throw new Error('Gagal konek server AI');
@@ -344,11 +475,21 @@
       messageDiv.style.borderRadius = '8px';
       messageDiv.style.background = sender === 'user' ? '#303030' : '#1e1e1e';
       messageDiv.textContent = text;
-
       chatMessages.appendChild(messageDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
-
       chatHistory.push({ sender, text, timestamp: new Date().toISOString() });
     }
-  </script></body>
+    
+    document.querySelectorAll('section').forEach(sec => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(sec);
+    });
+  </script>
+</body>
 </html>
