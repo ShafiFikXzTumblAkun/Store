@@ -489,6 +489,12 @@ const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
       }, { threshold: 0.1 });
       observer.observe(sec);
     });
+
+    window.onload = () => {
+      aiModal.style.display = 'flex';
+       aiToggleBtn.style.display = 'none';
+};
+
   </script>
 </body>
 </html>
