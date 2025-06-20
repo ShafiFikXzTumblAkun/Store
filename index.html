@@ -10,26 +10,23 @@
   <style>
     :root {
       --bg: #0e0e10;
-      --panel: #19191d;
-      --text: #e0e0e0;
-      --muted: #a1a1aa;
+      --panel: #1a1a1e;
+      --text: #f5f5f5;
+      --muted: #a3a3a3;
       --primary: #c084fc;
       --accent: #9333ea;
-      --hover: rgba(147, 51, 234, 0.1);
+      --hover: rgba(147, 51, 234, 0.08);
     }* {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Outfit', sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
   background: var(--bg) url('https://files.catbox.moe/bwsb2e.jpg') center/cover fixed no-repeat;
   color: var(--text);
+  scroll-behavior: smooth;
 }
 
 .wrapper {
@@ -40,15 +37,17 @@ body {
 }
 
 header h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
+  font-weight: bold;
+  text-align: center;
   color: var(--primary);
-  margin-bottom: 10px;
 }
 
 .subtitle {
-  color: var(--muted);
-  font-size: 1.1rem;
   text-align: center;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: var(--muted);
 }
 
 section {
@@ -57,34 +56,32 @@ section {
   padding: 2rem;
   margin: 2rem 0;
   opacity: 0;
-  transform: translateY(50px);
-  animation: fadeInUp 1s ease-out forwards;
+  transform: translateY(40px);
+  transition: all 0.7s ease-out;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .list-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .list-card {
   background: var(--hover);
   border-left: 4px solid var(--accent);
-  padding: 1rem;
   border-radius: 0.8rem;
+  padding: 1rem;
   transition: 0.3s;
 }
 
 .list-card:hover {
-  transform: translateY(-5px);
   background-color: rgba(147, 51, 234, 0.2);
+  transform: scale(1.03);
 }
 
 .title {
@@ -99,14 +96,14 @@ section {
 
 .bonus-list li {
   background: rgba(255,255,255,0.05);
-  padding: 0.7rem 1rem;
-  border-left: 3px solid var(--primary);
+  padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
+  border-left: 3px solid var(--primary);
   border-radius: 0.5rem;
   list-style: none;
   display: flex;
-  align-items: center;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .bonus-list li::before {
@@ -124,75 +121,20 @@ section {
 
 .contact-btn {
   background: var(--accent);
-  color: #fff;
-  padding: 0.8rem 1.4rem;
+  color: white;
+  padding: 0.9rem 1.4rem;
   border-radius: 0.6rem;
   font-weight: bold;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
-  transition: 0.3s;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .contact-btn:hover {
-  background: #7e22ce;
+  background-color: #7e22ce;
   transform: scale(1.05);
-}
-
-#aiToggleBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999;
-  background: linear-gradient(135deg, #9333ea, #7e22ce);
-  color: #fff;
-  padding: 0.9rem 1.2rem;
-  border-radius: 9999px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-  cursor: pointer;
-  animation: pulse 2s infinite ease-in-out;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: none;
-  font-weight: bold;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 12px rgba(147, 51, 234, 0.5);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 24px rgba(147, 51, 234, 0.8);
-  }
-}
-
-#aiModal {
-  display: none;
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  background: var(--panel);
-  border-radius: 1rem;
-  width: 320px;
-  max-height: 500px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
-  overflow: hidden;
-  flex-direction: column;
-}
-
-#chatMessages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-}
-
-#typingIndicator {
-  text-align: center;
-  padding: 0.5rem;
-  color: var(--muted);
 }
 
 footer {
@@ -200,6 +142,57 @@ footer {
   font-size: 0.9rem;
   color: var(--muted);
   margin-top: 2rem;
+}
+
+#aiToggleBtn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 999;
+  background: linear-gradient(135deg, #9333ea, #7e22ce);
+  color: white;
+  padding: 0.9rem 1.4rem;
+  border-radius: 9999px;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 0 12px rgba(147, 51, 234, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+#aiToggleBtn:hover {
+  transform: scale(1.1);
+}
+
+#aiModal {
+  display: none;
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  width: 320px;
+  max-height: 500px;
+  background: var(--panel);
+  border-radius: 1rem;
+  box-shadow: 0 0 18px rgba(0,0,0,0.6);
+  overflow: hidden;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#chatMessages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+#typingIndicator {
+  padding: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
 }
 
   </style>
@@ -342,7 +335,7 @@ footer {
     </footer>
   </main>
     
-  </main><button id="aiToggleBtn"><i class="fas fa-robot"></i> Bantuan AI</button>
+  </main><button id="aiToggleBtn"><i class="fas fa-robot"></i> AI</button>
 
   <div id="aiModal">
     <div style="background:var(--accent);padding:12px 16px;font-weight:bold;">Asisten AI - FikXzMods</div>
@@ -359,8 +352,6 @@ footer {
     const userInput = document.getElementById('userInput');
     const typingIndicator = document.getElementById('typingIndicator');
     const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
-
-    aiModal.style.display = 'none'; // ensure modal is hidden by default
 
     aiToggleBtn.onclick = () => {
       aiModal.style.display = aiModal.style.display === 'none' ? 'flex' : 'none';
@@ -397,5 +388,17 @@ footer {
       chatMessages.appendChild(msg);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+
+    // Section fadeIn ketika muncul di layar
+    document.querySelectorAll('section').forEach(sec => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(sec);
+    });
   </script></body>
 </html>
