@@ -204,66 +204,87 @@
       transform: scale(1.05);
     }
     
-    #aiToggleBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 50px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      cursor: pointer;
-    }
-    
-    #aiModal {
-      display: none;
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      z-index: 999;
-      background: var(--panel);
-      color: var(--text);
-      width: 320px;
-      max-height: 500px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.7);
-      overflow: hidden;
-      flex-direction: column;
-    }
-    
-    #chatMessages {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-      font-size: 0.9rem;
-    }
-    
-    #typingIndicator {
-      padding: 8px;
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-align: center;
-    }
-    
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-      margin-top: 40px;
-    }
+   #aiToggleBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  color: #fff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+#aiToggleBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
+}
 
-      .list-card .title {
-        font-size: 1rem;
-      }
-    }
+#aiModal {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 999;
+  background: var(--panel);
+  color: var(--text);
+  width: 320px;
+  max-height: 500px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  flex-direction: column;
+  animation: fadeInUp 0.4s ease-out;
+  border: 1px solid var(--accent);
+}
+
+/* Tambahan animasi muncul dari bawah */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#chatMessages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#chatMessages div {
+  padding: 10px 14px;
+  border-radius: 10px;
+  max-width: 80%;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+#chatMessages div.user {
+  background: #3c3c3c;
+  align-self: flex-end;
+}
+
+#chatMessages div.ai {
+  background: #1e1e1e;
+  align-self: flex-start;
+}
+
+    
   </style>
 </head>
 <body>
