@@ -488,16 +488,14 @@ const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
     }
 
     function addMessage(sender, text) {
-      const messageDiv = document.createElement('div');
-      messageDiv.style.marginBottom = '8px';
-      messageDiv.style.padding = '8px 10px';
-      messageDiv.style.borderRadius = '8px';
-      messageDiv.style.background = sender === 'user' ? '#303030' : '#1e1e1e';
-      messageDiv.textContent = text;
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      chatHistory.push({ sender, text, timestamp: new Date().toISOString() });
-    }
+        const messageDiv = document.createElement('div');
+        messageDiv.className = sender; // Tambah class 'user' atau 'ai'
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        chatHistory.push({ sender, text, timestamp: new Date().toISOString() });
+     }
+
     
     document.querySelectorAll('section').forEach(sec => {
       const observer = new IntersectionObserver(entries => {
