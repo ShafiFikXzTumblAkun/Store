@@ -1,204 +1,240 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FikXzMods - Market</title>
-  <meta name="theme-color" content="#4a148c" />
-  <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <meta name="theme-color" content="#4a148c"/>
+  <meta name="description" content="FikXzMods Market - Panel, Jasa dan Produk terpercaya."/>
+  <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #0e0e10;
-      --panel: #1a1a1e;
-      --text: #f5f5f5;
-      --muted: #a3a3a3;
+      --bg: #0f0f11;
+      --panel: #18181b;
+      --text: #e5e5e5;
+      --muted: #a0a0a0;
       --primary: #c084fc;
-      --accent: #9333ea;
-      --hover: rgba(147, 51, 234, 0.08);
-    }* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
-}
+      --accent: #7c3aed;
+      --hover: rgba(124, 58, 237, 0.15);
+    }
 
-body {
-  background: var(--bg) url('https://files.catbox.moe/bwsb2e.jpg') center/cover fixed no-repeat;
-  color: var(--text);
-  scroll-behavior: smooth;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+    }
 
-.wrapper {
-  max-width: 1080px;
-  margin: auto;
-  padding: 60px 20px;
-  backdrop-filter: blur(10px);
-}
+    body {
+      background: var(--bg) url('https://files.catbox.moe/bwsb2e.jpg') center/cover fixed no-repeat;
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
 
-header h1 {
-  font-size: 2.8rem;
-  font-weight: bold;
-  text-align: center;
-  color: var(--primary);
-}
+    .wrapper {
+      max-width: 1080px;
+      margin: auto;
+      padding: 60px 20px;
+      backdrop-filter: blur(10px);
+    }
 
-.subtitle {
-  text-align: center;
-  font-size: 1.1rem;
-  margin-top: 10px;
-  color: var(--muted);
-}
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+      text-align: center;
+    }
 
-section {
-  background: var(--panel);
-  border-radius: 1rem;
-  padding: 2rem;
-  margin: 2rem 0;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.7s ease-out;
-}
+    .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 10px;
+      text-align: center;
+    }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    section {
+      background-color: var(--panel);
+      border-radius: 14px;
+      padding: 28px;
+      margin: 40px 0;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
 
-.list-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-}
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.list-card {
-  background: var(--hover);
-  border-left: 4px solid var(--accent);
-  border-radius: 0.8rem;
-  padding: 1rem;
-  transition: 0.3s;
-}
+    section h2 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+    }
 
-.list-card:hover {
-  background-color: rgba(147, 51, 234, 0.2);
-  transform: scale(1.03);
-}
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
 
-.title {
-  font-weight: 600;
-  font-size: 1.05rem;
-}
+    .list-card {
+      background: var(--hover);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: 0.3s ease;
+    }
 
-.price {
-  font-size: 0.9rem;
-  color: var(--muted);
-}
+    .list-card:hover {
+      background-color: rgba(124, 58, 237, 0.25);
+      transform: scale(1.03);
+    }
 
-.bonus-list li {
-  background: rgba(255,255,255,0.05);
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-  border-left: 3px solid var(--primary);
-  border-radius: 0.5rem;
-  list-style: none;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
+    .title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
 
-.bonus-list li::before {
-  content: '✔';
-  color: var(--primary);
-}
+    .price {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
 
-.contact-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
+    .bonus-list li {
+      background-color: rgba(255, 255, 255, 0.04);
+      margin-bottom: 10px;
+      padding: 12px 18px;
+      border-left: 3px solid var(--primary);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.contact-btn {
-  background: var(--accent);
-  color: white;
-  padding: 0.9rem 1.4rem;
-  border-radius: 0.6rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  transition: 0.3s;
-}
+    .bonus-list li::before {
+      content: '✔';
+      color: var(--primary);
+    }
 
-.contact-btn:hover {
-  background-color: #7e22ce;
-  transform: scale(1.05);
-}
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
 
-footer {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-top: 2rem;
-}
+    .contact-btn {
+      background-color: var(--accent);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s ease;
+    }
 
-#aiToggleBtn {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  z-index: 999;
-  background: linear-gradient(135deg, #9333ea, #7e22ce);
-  color: white;
-  padding: 0.9rem 1.4rem;
-  border-radius: 9999px;
-  border: none;
-  font-weight: bold;
-  box-shadow: 0 0 12px rgba(147, 51, 234, 0.5);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: transform 0.3s ease;
-}
+    .contact-btn:hover {
+      transform: scale(1.05);
+      background-color: #6d28d9;
+    }
 
-#aiToggleBtn:hover {
-  transform: scale(1.1);
-}
+    #aiToggleBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
 
-#aiModal {
-  display: none;
-  position: fixed;
-  bottom: 140px;
-  right: 20px;
-  width: 320px;
-  max-height: 500px;
-  background: var(--panel);
-  border-radius: 1rem;
-  box-shadow: 0 0 18px rgba(0,0,0,0.6);
-  overflow: hidden;
-  flex-direction: column;
-  z-index: 1000;
-}
+    #aiToggleBtn:hover {
+      transform: scale(1.1);
+    }
 
-#chatMessages {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  font-size: 0.9rem;
-}
+    #aiModal {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 320px;
+      max-height: 500px;
+      background: var(--panel);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      animation: fadeIn 0.4s ease;
+    }
 
-#typingIndicator {
-  padding: 8px;
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-align: center;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
+    #chatMessages {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+
+    #chatMessages div {
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    #typingIndicator {
+      padding: 10px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      #aiModal {
+        width: 90%;
+        right: 5%;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="wrapper">
+    <header>
+      <h1>FikXzMods Marketplace</h1>
+      <p class="subtitle">List Store dan Payment Aing</p>
+    </header>
 
 
     <!-- Section: Script -->
@@ -335,70 +371,72 @@ footer {
     </footer>
   </main>
     
-  </main><button id="aiToggleBtn"><i class="fas fa-robot"></i> AI</button>
-
-  <div id="aiModal">
-    <div style="background:var(--accent);padding:12px 16px;font-weight:bold;">Asisten AI - FikXzMods</div>
-    <div id="chatMessages"></div>
-    <div style="padding:10px;border-top:1px solid #333;display:flex;gap:8px;">
-      <input id="userInput" type="text" placeholder="Tulis pertanyaan..." style="flex:1;padding:8px;border-radius:6px;border:none;background:#1f1f1f;color:#fff;">
-      <button onclick="sendMessage()" style="padding:8px 12px;background:var(--accent);border:none;color:#fff;border-radius:6px;">Kirim</button>
+    <button id="aiToggleBtn">🤖 Bantuan AI</button>
+    <div id="aiModal">
+      <div style="background:var(--accent);padding:12px 16px;font-weight:bold;">Asisten AI - FikXzMods</div>
+      <div id="chatMessages"></div>
+      <div style="padding:10px;border-top:1px solid #333;display:flex;gap:8px;">
+        <input id="userInput" type="text" placeholder="Tanya apa aja..." style="flex:1;padding:8px;border-radius:6px;border:none;outline:none;background:#1f1f1f;color:#fff;">
+        <button onclick="sendMessage()" style="padding:8px 12px;background:var(--accent);border:none;color:#fff;border-radius:6px;">Kirim</button>
+      </div>
+      <div id="typingIndicator" style="display:none;">AI sedang berpikir...</div>
     </div>
-    <div id="typingIndicator" style="display:none;">AI sedang mengetik...</div>
-  </div>  <script>
-    const aiToggleBtn = document.getElementById('aiToggleBtn');
-    const aiModal = document.getElementById('aiModal');
-    const chatMessages = document.getElementById('chatMessages');
-    const userInput = document.getElementById('userInput');
-    const typingIndicator = document.getElementById('typingIndicator');
+
+    <footer>
+      <p>&copy; FikXzMods 2024 - 2025. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
     const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
+    const aiName = "FikXz Ai";
+    const userName = "Pengunjung";
+    const Deppler = "FikXzMods";
+    const chatMessages = document.getElementById("chatMessages");
+    const typingIndicator = document.getElementById("typingIndicator");
+    const aiModal = document.getElementById("aiModal");
+    const aiToggleBtn = document.getElementById("aiToggleBtn");
 
     aiToggleBtn.onclick = () => {
-      aiModal.style.display = aiModal.style.display === 'none' ? 'flex' : 'none';
+      aiModal.style.display = aiModal.style.display === "none" || aiModal.style.display === "" ? "flex" : "none";
     };
 
     async function sendMessage() {
-      const msg = userInput.value.trim();
+      const input = document.getElementById("userInput");
+      const msg = input.value.trim();
       if (!msg) return;
-
-      addMessage('user', msg);
-      userInput.value = '';
-      typingIndicator.style.display = 'block';
+      addMessage("user", msg);
+      input.value = "";
+      typingIndicator.style.display = "block";
 
       try {
-        const prompt = `Nama Kamu adalah FikXz Ai, kamu adalah asisten untuk web FikXzMods. Jawab dengan sopan dan jelas.\nPertanyaan: ${msg}`;
+        const prompt = `Nama Kamu adalah ${aiName}, kamu adalah AI yang dibuat oleh ${Deppler}. Tugas kamu adalah menjawab pertanyaan seputar fitur web ini.\n\nPengguna: ${userName}\nPertanyaan: ${msg}`;
         const res = await fetch(apiUrl + encodeURIComponent(prompt));
         const data = await res.json();
-        const reply = data.result || data.data || data.message || 'Gagal mendapat balasan';
-        addMessage('ai', reply);
+        const aiReply = data.result || data.data || data.message || "Tidak ada respon.";
+        addMessage("ai", aiReply.replace(/\b(kamu|Kamu|Anda|you)\b/gi, userName));
       } catch (e) {
-        addMessage('ai', 'Terjadi error saat menghubungi AI.');
+        addMessage("ai", "Terjadi kesalahan.");
       } finally {
-        typingIndicator.style.display = 'none';
+        typingIndicator.style.display = "none";
       }
     }
 
     function addMessage(sender, text) {
-      const msg = document.createElement('div');
-      msg.style.padding = '8px';
-      msg.style.margin = '4px';
-      msg.style.borderRadius = '6px';
-      msg.style.background = sender === 'user' ? '#333' : '#222';
-      msg.textContent = text;
-      chatMessages.appendChild(msg);
+      const div = document.createElement("div");
+      div.textContent = (sender === "ai" ? aiName + ": " : "") + text;
+      div.style.background = sender === "user" ? "#333" : "#1e1e1e";
+      div.style.textAlign = sender === "user" ? "right" : "left";
+      chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Section fadeIn ketika muncul di layar
-    document.querySelectorAll('section').forEach(sec => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.2 });
-      observer.observe(sec);
+    document.querySelectorAll("section").forEach(section => {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      }, { threshold: 0.1 });
+      observer.observe(section);
     });
-  </script></body>
+  </script>
+</body>
 </html>
