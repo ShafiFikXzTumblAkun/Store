@@ -490,10 +490,9 @@ const apiUrl = "https://api.yupradev.biz.id/api/ai/gpt?text=";
       observer.observe(sec);
     });
 
-    window.onload = () => {
-      aiModal.style.display = 'flex';
-       aiToggleBtn.style.display = 'none';
-};
+    aiToggleBtn.onclick = () => {
+    aiModal.style.display = aiModal.style.display === 'none' ? 'flex' : 'none';
+   };
 
   </script>
 </body>
