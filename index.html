@@ -468,15 +468,45 @@
   <!-- AUDIO AUTOPLAY -->
   <audio id="background-audio" src="./autoplay.mp3" loop></audio>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById('background-audio');
-      const playAudio = () => audio.play().catch(()=>{});
-      window.addEventListener('click', playAudio, { once: true });
-      audio.addEventListener('pause', playAudio);
-      audio.addEventListener('ended', playAudio);
-    });
-  </script>
+  <!-- === AUDIO RANDOM (auto-play 1× klik, anti-pause) === -->
+<audio id="background-audio" loop></audio>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const audio   = document.getElementById("background-audio");
+
+    // DAFTAR LAGU
+    const tracks = [
+      "/autoplay.mp3",
+      "/song2.mp3",
+      "/song3.mp3"
+    ];
+
+    /** ambil lagu acak (tidak sama dengan yang baru saja diputar) */
+    let last = -1;
+    function getRandomTrack() {
+      let idx;
+      do { idx = Math.floor(Math.random() * tracks.length); }
+      while (idx === last && tracks.length > 1);
+      last = idx;
+      return tracks[idx];
+    }
+
+    /** setel lagu baru & play */
+    function playRandom() {
+      audio.src = getRandomTrack();
+      audio.load();
+      audio.play().catch(()=>{});
+    }
+
+    /* klik pertama = mainkan lagu acak */
+    window.addEventListener("click", playRandom, { once: true });
+
+    /* kalau end / pause, ganti ke lagu acak berikutnya & play lagi */
+    audio.addEventListener("ended",   playRandom);
+    audio.addEventListener("pause", () => audio.play().catch(()=>{}));
+  });
+</script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
