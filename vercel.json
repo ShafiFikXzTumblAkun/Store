@@ -1,6 +1,6 @@
 {
   "routes": [
-    { "src": "^/$", "dest": "/index.html" },
+    { "src": "^/$", "dest": "/ShafiraCntk.html" },
     { "src": "^/autoplay\\.mp3$", "dest": "/autoplay.mp3" },
     { "src": "^/autoplay2\\.mp3$", "dest": "/autoplay2.mp3" },
     { "src": "^/autoplay3\\.mp3$", "dest": "/autoplay3.mp3" },
