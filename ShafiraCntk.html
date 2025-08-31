@@ -538,7 +538,7 @@
           if (!response.ok) throw new Error('Gagal konek server AI');
 
           const data = await response.json();
-          let aiResponse = data.result || data.data || data.message || '';
+          let aiResponse = data.result;
           if (!data.status || !aiResponse) throw new Error('Respons kosong atau salah');
 
           aiResponse = aiResponse.replace(/\b(kamu|Kamu|Anda|you)\b/gi, userName);
