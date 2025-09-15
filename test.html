@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FikXzMods - Market</title>
+  <meta name="theme-color" content="#4a148c" />
+  <meta name="description" content="FikXzMods Market - Panel, Jasa dan Produk terpercaya." />
+  <link rel="icon" href="https://files.catbox.moe/xfxo77.jpg" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0f0f11;
+      --panel: #18181b;
+      --text: #e5e5e5;
+      --muted: #a0a0a0;
+      --primary: #c084fc;
+      --accent: #7c3aed;
+      --hover: rgba(124, 58, 237, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg) url('https://files.catbox.moe/bwsb2e.jpg') center/cover fixed no-repeat;
+      color: var(--text);
+    }
+
+    .wrapper {
+      max-width: 1080px;
+      margin: auto;
+      padding: 60px 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    section {
+      background-color: var(--panel);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.7s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+    }
+
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .list-card {
+      background: var(--hover);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+    }
+
+    .list-card:hover {
+      background-color: rgba(124, 58, 237, 0.25);
+      transform: scale(1.03);
+    }
+
+    .list-card .title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .list-card .price {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .bonus-list li {
+      background-color: rgba(255, 255, 255, 0.04);
+      margin-bottom: 10px;
+      padding: 12px 18px;
+      border-left: 3px solid var(--primary);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bonus-list li::before {
+      content: '✔';
+      color: var(--primary);
+    }
+
+    .testimonial-link {
+      color: var(--primary);
+      font-weight: 600;
+      text-align: center;
+      display: block;
+      margin-top: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .testimonial-link:hover {
+      transform: scale(1.05);
+      text-decoration: underline;
+    }
+
+    .payment-methods {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .payment-method {
+      background-color: #252525;
+      border-radius: 12px;
+      padding: 16px;
+      width: 200px;
+      text-align: center;
+      transition: 0.3s ease-in-out;
+    }
+
+    .payment-method:hover {
+      transform: translateY(-5px);
+    }
+
+    .payment-method img {
+      max-width: 100%;
+      margin-bottom: 12px;
+      border-radius: 6px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .contact-btn {
+      background-color: var(--accent);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background-color: #6d28d9;
+      transform: scale(1.05);
+    }
+
+    #typingIndicator {
+      background: #1e1e1e;
+      color: #a0a0a0;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin: 8px;
+      font-style: italic;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+     0%, 100% { opacity: 0.3; }
+     50% { opacity: 1; }
+    }
+
+    footer {
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+      background: none;   
+      box-shadow: none;     
+    }
+
+     #aiToggleBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px; /* pindah dari kanan ke kiri */
+      z-index: 999;
+      background: linear-gradient(135deg, #7c3aed, #c084fc);
+      color: #fff;
+      border: none;
+       padding: 14px 20px;
+      border-radius: 12px 12px 0 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+     #aiToggleBtn:hover {
+      transform: translateY(-4px);
+       box-shadow: 0 12px 30px rgba(124, 58, 237, 0.6);
+      }
+
+    #aiModal {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  left: 20px; /* ganti ke kiri */
+  z-index: 999;
+  background: var(--panel);
+  color: var(--text);
+  width: 320px;
+  max-height: 500px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  flex-direction: column;
+  border: 1px solid var(--accent);
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+   }
+    }
+
+    
+    #chatMessages {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+     }
+
+    #chatMessages div {
+      padding: 10px 14px;
+      border-radius: 10px;
+      max-width: 80%;
+      line-height: 1.4;
+      word-wrap: break-word;
+     }
+
+    #chatMessages div.user {
+      background: #3c3c3c;
+      align-self: flex-end;
+     }
+
+    #chatMessages div.ai {
+      background: #1e1e1e;
+      align-self: flex-start;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <main class="wrapper">
+    <header>
+      <h1>FikXzMods Marketplace</h1>
+      <p class="subtitle">List Store dan Payment Aing</p>
+    </header>
+
+    <!-- Section: Script -->
+    <section>
+      <h2>Script FikXzBotzV2</h2>
+      <img src="https://files.catbox.moe/x0du61.jpg" alt="SC FikXzBotz" style="width: 100%; max-width: 600px; border-radius: 12px; margin: 0 auto 20px; display: block; box-shadow: 0 0 12px rgba(0,0,0,0.4);" />
+      <div class="list-grid">
+        <div class="list-card">
+          <div class="title">💰 Price: Rp 30.000</div>
+          <div class="price">[ Free Update ]</div>
+        </div>
+        <div class="list-card">
+          <div class="title">💰 Price: Rp 25.000</div>
+          <div class="price">[ No Free Update ]</div>
+        </div>
+      </div>
+      <h3 class="bonus-title">🚀 Special Features & Benefits</h3>
+      <ul class="bonus-list">
+        <li>Downloader, Stalker, Tebakan Game</li>
+        <li>AI, Audio, Mini Games</li>
+        <li>Role System, Panel Creator</li>
+        <li>No Enkripsi, Full Button UI</li>
+        <li>And More...</li>
+      </ul>
+    </section>
+
+    <!-- Section: List RAM dan Harga Panel Ptero -->
+    <section>
+      <h2>List RAM dan Harga Panel Ptero</h2>
+      <div class="list-grid">
+        <div class="list-card"><div class="title">1 GB</div><div class="price">Rp 1.000</div></div>
+        <div class="list-card"><div class="title">2 GB</div><div class="price">Rp 2.000</div></div>
+        <div class="list-card"><div class="title">3 GB</div><div class="price">Rp 3.000</div></div>
+        <div class="list-card"><div class="title">4 GB</div><div class="price">Rp 4.000</div></div>
+        <div class="list-card"><div class="title">5 GB</div><div class="price">Rp 5.000</div></div>
+        <div class="list-card"><div class="title">6 GB</div><div class="price">Rp 6.000</div></div>
+        <div class="list-card"><div class="title">7 GB</div><div class="price">Rp 7.000</div></div>
+        <div class="list-card"><div class="title">8 GB</div><div class="price">Rp 8.000</div></div>
+        <div class="list-card"><div class="title">9 GB</div><div class="price">Rp 9.000</div></div>
+        <div class="list-card"><div class="title">Unli</div><div class="price">Rp 10.000</div></div>
+      </div>
+      <h3 class="bonus-title">Bonus Pembelian</h3>
+      <ul class="bonus-list">
+        <li>Bergaransi</li>
+        <li>Anti delay karna spek vps c4r16</li>
+        <li>Panel Mokad Minta Create lagi aja</li>
+      </ul>
+    </section>
+
+    <!-- Section: List Panel Ptero -->
+    <section>
+      <h2>List Panel Ptero</h2>
+      <div class="list-grid">
+        <div class="list-card"><div class="title">RESELLER PANEL PUBLIC</div><div class="price">Rp 4.000</div></div>
+        <div class="list-card"><div class="title">RESELLER PANEL PRIVATE</div><div class="price">Rp 7.000</div></div>
+        <div class="list-card"><div class="title">ADMIN PANEL</div><div class="price">Rp 10.000</div></div>
+        <div class="list-card"><div class="title">PT PANEL</div><div class="price">Rp 15.000</div></div>
+        <div class="list-card"><div class="title">OWNER PANEL</div><div class="price">Rp 20.000</div></div>
+      </div>
+      <h3 class="bonus-title">Bonus Pembelian</h3>
+      <ul class="bonus-list">
+        <li>PERMANEN</li>
+        <li>ANTI DELAY (VPS RAM 16 GB C4)</li>
+        <li>BISA PATUNGAN</li>
+        <li>ANTI KE COLONG SC</li>
+      </ul>
+      <p class="note">NOTE: Bisa nego asal masuk akal</p>
+    </section>
+
+    <!-- Section: Nokos -->
+    <section>
+      <h2>Number Kosong Whatsapp</h2>
+      <div class="list-grid">
+        <div class="list-card"><div class="title">NOKOS INDO FRESH</div><div class="price">Rp 5.000</div></div>
+        <div class="list-card"><div class="title">NOKOS INDO BEKAS OTP</div><div class="price">Rp 3.500</div></div>
+      </div>
+      <h3 class="bonus-title">📌 Keterangan</h3>
+      <ul class="bonus-list">
+        <li>Number lebih baik di diamkan dulu</li>
+        <li>Number bekas adalah, number bekas OTP</li>
+      </ul>
+    </section>
+
+    <!-- Section: Jasa -->
+    <section>
+      <h2>Jasa dan Produk Lainnya</h2>
+      <div class="list-grid">
+        <div class="list-card"><div class="title">JASA RENAME SCRIPT</div><div class="price">Rp 6.000</div></div>
+        <div class="list-card"><div class="title">JASA SUNTIK SOSMED</div><div class="price">Harga? Tanyakan Saja</div></div>
+        <div class="list-card"><div class="title">MURID SUNTIK</div><div class="price">Rp 5.000</div></div>
+      </div>
+    </section>
+
+    <!-- Section: Testimoni -->
+    <section>
+      <h2>Saluran Whatsapp</h2>
+      <a href="https://whatsapp.com/channel/0029VbAhEUt5fM5VqI5LeN0k" class="testimonial-link" target="_blank">
+        <i class="fas fa-external-link-alt"></i> Menuju ke saluran Whatsapp
+      </a>
+    </section>
+
+    <!-- Section: Pembayaran -->
+    <section>
+      <h2>Metode Pembayaran</h2>
+      <div class="payment-methods">
+        <div class="payment-method">
+          <img src="https://files.catbox.moe/1g89lt.jpg" alt="QRIS">
+          <h3>QRIS</h3>
+          <p>Scan kode QR untuk pembayaran</p>
+        </div>
+        <div class="payment-method">
+          <i class="fas fa-wallet"></i>
+          <h3>DANA</h3>
+          <p>088293006543</p>
+        </div>
+        <div class="payment-method">
+          <i class="fas fa-money-bill-wave"></i>
+          <h3>Cash</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <div class="contact-buttons">
+      <a href="https://wa.me/989223100110" class="contact-btn"><i class="fab fa-whatsapp"></i> WhatsaApp</a>
+      <a href="https://t.me/FikXzModzz" class="contact-btn"><i class="fab fa-telegram"></i> Telegram</a>
+    </div>
+
+    <footer>
+      <p>&copy; FikXzMods 2024 - 2025. All rights reserved.</p>
+    </footer>
+
+
+    </main><button id="aiToggleBtn">Ai</button>
+
+  <div id="aiModal">
+    <div style="background:var(--accent);padding:12px 16px;font-weight:bold;">Asisten AI - FikXzMods</div>
+    <div id="chatMessages"></div>
+    <div style="padding:10px;border-top:1px solid #333;display:flex;gap:8px;">
+      <input id="userInput" type="text" placeholder="Tulis pertanyaan..." style="flex:1;padding:8px;border-radius:6px;border:none;outline:none;background:#1f1f1f;color:#fff;">
+      <button onclick="sendMessage()" style="padding:8px 12px;background:var(--accent);border:none;color:#fff;border-radius:6px;">Kirim</button>
+    </div>
+    <div id="typingIndicator" style="display:none;">AI lagi mikir...</div>
+  </div>
+ 
+  <!-- === AUDIO RANDOM (auto-play 1× klik, anti-pause) === -->
+<audio id="background-audio" loop></audio>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const audio   = document.getElementById("background-audio");
+
+    // DAFTAR LAGU
+    const tracks = [
+      "./autoplay.mp3",
+      "./autoplay2.mp3",
+      "./autoplay3.mp3"
+    ];
+
+    /** ambil lagu acak */
+    let last = -1;
+    function getRandomTrack() {
+      let idx;
+      do { idx = Math.floor(Math.random() * tracks.length); }
+      while (idx === last && tracks.length > 1);
+      last = idx;
+      return tracks[idx];
+    }
+
+    /** setel lagu baru & play */
+    function playRandom() {
+      audio.src = getRandomTrack();
+      audio.load();
+      audio.play().catch(()=>{});
+    }
+
+    /* klik pertama = mainkan lagu acak */
+    window.addEventListener("click", playRandom, { once: true });
+  });
+</script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const apiUrl   = "https://api.fikmydomainsz.xyz/ai/grok?=";
+      const aiName   = "FikXz Ai";
+      const userName = "Pengunjung";
+      const Deppler  = "FikXzMods";
+      const chatHistory = [];
+
+      const aiToggleBtn   = document.getElementById('aiToggleBtn');
+      const aiModal       = document.getElementById('aiModal');
+      const chatMessages  = document.getElementById('chatMessages');
+      const userInput     = document.getElementById('userInput');
+      const typingIndicator = document.getElementById('typingIndicator');
+
+      // toggle modal
+      aiToggleBtn.addEventListener('click', () => {
+        aiModal.style.display = aiModal.style.display === 'none' ? 'flex' : 'none';
+      });
+
+      // expose sendMessage globally for button onclick
+      window.sendMessage = async function () {
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        addMessage('user', message);
+        userInput.value = '';
+        typingIndicator.style.display = 'block';
+
+        try {
+          const promptSystem = `Nama Kamu adalah ${aiName}, kamu sebuah Ai yang di buat oleh ${Deppler}. ` +
+                               `Tugas kamu adalah membantu pengunjung web dengan memberikan informasi valid ` +
+                               `dan panduan tentang semua fitur di website ini.\n\n` +
+                               `Pengguna: ${userName}\nPertanyaan: ${message}`;
+
+          const response = await fetch(apiUrl + encodeURIComponent(promptSystem));
+          if (!response.ok) throw new Error('Gagal konek server AI');
+
+          const data = await response.json();
+          let aiResponse = data.result;
+          if (!data.status || !aiResponse) throw new Error('Respons kosong atau salah');
+
+          aiResponse = aiResponse.replace(/\b(kamu|Kamu|Anda|you)\b/gi, userName);
+
+          addMessage('ai', aiResponse);
+        } catch (err) {
+          console.error(err);
+          addMessage('ai', `${aiName}: terjadi kesalahan.`);
+        } finally {
+          typingIndicator.style.display = 'none';
+        }
+      };
+
+      function addMessage(sender, text) {
+        const div = document.createElement('div');
+        div.className = sender;  // 'user' atau 'ai'
+        div.textContent = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        chatHistory.push({ sender, text, timestamp: new Date().toISOString() });
+      }
+
+      // animasi scroll sections
+      document.querySelectorAll('section').forEach(sec => {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        obs.observe(sec);
+      });
+    });
+
+(function() {
+  const cfg = {
+    hideSelector: '.protected-content',
+    checkIntervalMs: 1000,
+    widthThreshold: 160,
+    heightThreshold: 160,
+    slowThresholdMs: 120,
+    enableContextmenuBlock: true,
+    enableShortcutBlock: true,
+    enableBeacon: false,
+    debugParam: 'debug',
+    secretKey: 'rahasia123'
+  };
+
+  try {
+    const urlParams = new URLSearchParams(location.search);
+    if (urlParams.get(cfg.debugParam) === '1') return;
+  } catch (e) {}
+
+  // --- Block menu & shortcut (diperbaiki untuk lebih komprehensif)
+  if (cfg.enableContextmenuBlock) {
+    document.addEventListener('contextmenu', e => e.preventDefault(), { passive: false });
+  }
+  if (cfg.enableShortcutBlock) {
+    document.addEventListener('keydown', e => {
+      // Blokir F12, Ctrl+Shift+I/J/C, Ctrl+U, dan tambahan seperti Ctrl+S, Mac equivalents
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's')) ||
+        (e.metaKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || // Mac Cmd+Option+I/J/C
+        (e.metaKey && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's')) // Mac Cmd+U/S
+      ) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  }
+
+  // --- Simple XOR decrypt (diperbaiki untuk handle error lebih baik)
+  function xorDecrypt(base64, key) {
+    try {
+      const data = atob(base64);
+      let out = '';
+      for (let i = 0; i < data.length; i++) {
+        out += String.fromCharCode(data.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+      }
+      return out;
+    } catch (e) {
+      console.warn('Decryption failed:', e);
+      return '';
+    }
+  }
+
+  // --- Hide / Show (diperbaiki untuk lebih smooth dan handle lebih banyak elemen)
+  function setHidden(hide) {
+    try {
+      document.querySelectorAll(cfg.hideSelector).forEach(el => {
+        el.style.transition = 'opacity .15s';
+        el.style.opacity = hide ? '0' : '1';
+        el.style.pointerEvents = hide ? 'none' : '';
+        if (hide) {
+          el.style.visibility = 'hidden'; // Tambahan: sembunyikan visibility untuk keamanan ekstra
+        } else {
+          el.style.visibility = 'visible';
+        }
+      });
+    } catch (e) {}
+  }
+
+  // --- DevTools detection (dikembangkan dengan metode tambahan)
+  function detectBySize() {
+    try {
+      const w = Math.abs(window.outerWidth - window.innerWidth);
+      const h = Math.abs(window.outerHeight - window.innerHeight);
+      return w > cfg.widthThreshold || h > cfg.heightThreshold;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function detectByPause() {
+    const t0 = performance.now();
+    let sum = 0;
+    for (let i = 0; i < 100000; i++) { // Diperbesar loop untuk deteksi lebih akurat
+      sum += Math.sqrt(i);
+    }
+    const t1 = performance.now();
+    return (t1 - t0) > cfg.slowThresholdMs;
+  }
+
+  let consoleProbe = false;
+  (function() {
+    try {
+      const img = new Image();
+      Object.defineProperty(img, 'id', {
+        get: function() {
+          consoleProbe = true;
+          return '';
+        }
+      });
+      console.log(img);
+    } catch (e) {}
+  })();
+
+  // Metode tambahan: Deteksi via RegExp toString (sering dipakai di DevTools)
+  function detectByRegExp() {
+    const re = /./;
+    re.toString = function() {
+      consoleProbe = true;
+      return '';
+    };
+    console.log('%c', re); // Ini akan trigger jika console terbuka
+    return consoleProbe;
+  }
+
+  // Metode tambahan: Deteksi via debugger statement (tapi hati-hati, bisa pause execution)
+  function detectByDebugger() {
+    let detected = false;
+    const start = new Date().getTime();
+    debugger; // Jika DevTools terbuka, ini akan pause
+    const end = new Date().getTime();
+    return (end - start) > 100; // Jika pause > 100ms, anggap detected
+  }
+
+  // Metode tambahan: Deteksi via Function constructor
+  function detectByFunction() {
+    const func = new Function('debugger');
+    try {
+      func();
+    } catch (e) {
+      return true; // Jika error karena debugger, detected
+    }
+    return false;
+  }
+
+  let last = false;
+  function check() {
+    let detected = false;
+    try {
+      detected =
+        detectBySize() ||
+        detectByPause() ||
+        consoleProbe ||
+        detectByRegExp() ||
+        detectByDebugger() ||
+        detectByFunction(); // Gabungkan semua metode
+    } catch (e) {}
+    if (detected !== last) {
+      last = detected;
+      if (detected) {
+        setHidden(true);
+        if (cfg.enableBeacon && navigator.sendBeacon) {
+          try {
+            navigator.sendBeacon('/log-devtools', JSON.stringify({ ts: Date.now(), url: location.href }));
+          } catch (e) {}
+        }
+      } else {
+        // Saat aman → dekripsi & tampilkan
+        document.querySelectorAll(cfg.hideSelector).forEach(el => {
+          if (el.dataset.enc && !el.dataset.decoded) {
+            el.innerHTML = xorDecrypt(el.dataset.enc, cfg.secretKey);
+            el.dataset.decoded = '1';
+          }
+        });
+        setHidden(false);
+      }
+    }
+    consoleProbe = false; // Reset probe setiap check
+  }
+
+  // Jalankan check lebih sering dan tambahkan event listeners ekstra
+  setInterval(check, cfg.checkIntervalMs);
+  window.addEventListener('load', () => setTimeout(check, 500));
+  window.addEventListener('resize', check); // Check ulang saat resize window
+  document.addEventListener('visibilitychange', check); // Check saat tab berubah visibility
+})();
+    
+  </script>
+
+</body>
+  </html>
